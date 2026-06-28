@@ -11,6 +11,7 @@ export const navItems = [
   { label: "Story", href: "/story" },
   { label: "Menu", href: "/menu" },
   { label: "Locations", href: "/locations" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const signatures = [

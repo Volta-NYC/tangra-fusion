@@ -137,10 +137,10 @@ export function PageIntro({
       {image && (
         <>
           <div
-            className="intro-image absolute inset-0 -z-20 bg-cover bg-center opacity-[0.24]"
+            className="intro-image pointer-events-none absolute inset-0 -z-20 bg-cover bg-center opacity-[0.24]"
             style={{ backgroundImage: `url(${image})` }}
           />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.98),rgba(23,20,16,0.82),rgba(23,20,16,0.48))]" />
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.98),rgba(23,20,16,0.82),rgba(23,20,16,0.48))]" />
         </>
       )}
       <div className="scroll-reveal reveal-left intro-copy mx-auto max-w-7xl">

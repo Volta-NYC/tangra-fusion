@@ -16,8 +16,8 @@ export default function Home() {
       <SiteHeader />
 
       <section className="hero-scroll relative isolate flex min-h-screen overflow-hidden bg-ink px-5 pt-24 text-paper sm:px-8">
-        <div className="hero-scroll-image absolute inset-0 -z-20 bg-[url('https://www.tangrafusionnyc.com/images/1.jpg')] bg-cover bg-center opacity-45" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.96),rgba(23,20,16,0.76),rgba(23,20,16,0.22))]" />
+        <div className="hero-scroll-image pointer-events-none absolute inset-0 -z-20 bg-[url('https://www.tangrafusionnyc.com/images/1.jpg')] bg-cover bg-center opacity-45" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.96),rgba(23,20,16,0.76),rgba(23,20,16,0.22))]" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.72fr]">
           <div className="scroll-reveal reveal-left is-visible">
             <p className="eyebrow text-gold">Chinese cuisine, Indian style</p>
@@ -30,12 +30,12 @@ export default function Home() {
               deep-fried signatures that made the restaurant a Queens staple.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link className="button button-gold" href="/menu">
+              <a className="button button-gold" href="/menu">
                 Explore Menu
-              </Link>
-              <Link className="button button-outline-light" href="/locations">
+              </a>
+              <a className="button button-outline-light" href="/locations">
                 Visit Us
-              </Link>
+              </a>
               <a className="button button-ghost" href="tel:7187868008">
                 Call Sunnyside
               </a>
