@@ -1,6 +1,15 @@
 import Link from "next/link";
 
-import { locations, menuSections, navItems, signatures, yelpMenuUrl } from "./content";
+import {
+  galleryImages,
+  locations,
+  menuSections,
+  navItems,
+  signatures,
+  site,
+} from "./content";
+
+type MenuItem = (typeof menuSections)[number]["items"][number];
 
 export function SiteHeader() {
   return (
@@ -36,22 +45,61 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-black px-5 py-10 text-paper sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-serif text-3xl font-bold">Tangra Fusion</p>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-paper/58">
-            Chinese cuisine, Indian style. Halal meat. Elmhurst and Sunnyside,
-            Queens.
+    <footer className="bg-black px-5 py-14 text-paper sm:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.6fr_1fr]">
+        <div className="reveal-on-scroll">
+          <p className="font-serif text-4xl font-bold">{site.name}</p>
+          <p className="mt-4 max-w-xl text-sm leading-6 text-paper/58">
+            {site.description}
           </p>
-        </div>
-        <div className="flex flex-wrap gap-5 text-xs font-bold uppercase tracking-[0.18em] text-paper/55">
-          {navItems.map((item) => (
-            <Link className="transition hover:text-paper" href={item.href} key={item.href}>
-              {item.label}
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link className="button button-gold" href="/menu">
+              View Menu
             </Link>
-          ))}
+            <a className="button button-outline-light" href={locations[1].phoneHref}>
+              Call Sunnyside
+            </a>
+          </div>
         </div>
+
+        <div className="reveal-on-scroll reveal-delay-1">
+          <h3 className="footer-title">Explore</h3>
+          <div className="mt-5 grid gap-3 text-sm text-paper/62">
+            {navItems.map((item) => (
+              <Link className="transition hover:text-paper" href={item.href} key={item.href}>
+                {item.label}
+              </Link>
+            ))}
+            <a className="transition hover:text-paper" href={site.yelpMenuUrl}>
+              Yelp Menu
+            </a>
+          </div>
+        </div>
+
+        <div className="reveal-on-scroll reveal-delay-2">
+          <h3 className="footer-title">Visit</h3>
+          <div className="mt-5 grid gap-5 text-sm leading-6 text-paper/62 sm:grid-cols-2 lg:grid-cols-1">
+            {locations.map((location) => (
+              <div key={location.name}>
+                <p className="font-bold text-paper">{location.name}</p>
+                <p>{location.address}</p>
+                <a className="transition hover:text-paper" href={location.phoneHref}>
+                  {location.phone}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 Tangra Fusion. All rights reserved.</p>
+        <p>
+          Created by{" "}
+          <a className="volta-link" href={site.voltaUrl} rel="noreferrer" target="_blank">
+            Volta
+          </a>
+        </p>
       </div>
     </footer>
   );
@@ -74,16 +122,27 @@ export function SignatureTicker() {
 
 export function PageIntro({
   eyebrow,
+  image,
   title,
   text,
 }: {
   eyebrow: string;
+  image?: string;
   title: string;
   text: string;
 }) {
   return (
-    <section className="bg-ink px-5 pb-16 pt-32 text-paper sm:px-8 lg:pb-20">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative isolate overflow-hidden bg-ink px-5 pb-16 pt-32 text-paper sm:px-8 lg:pb-20">
+      {image && (
+        <>
+          <div
+            className="absolute inset-0 -z-20 bg-cover bg-center opacity-[0.24]"
+            style={{ backgroundImage: `url(${image})` }}
+          />
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.98),rgba(23,20,16,0.82),rgba(23,20,16,0.48))]" />
+        </>
+      )}
+      <div className="reveal-on-scroll mx-auto max-w-7xl">
         <p className="eyebrow text-gold">{eyebrow}</p>
         <h1 className="mt-5 max-w-4xl font-serif text-5xl font-black leading-[0.94] sm:text-7xl">
           {title}
@@ -96,26 +155,22 @@ export function PageIntro({
 
 export function MenuGrid({ compact = false }: { compact?: boolean }) {
   const sections = compact
-    ? [
-        {
-          title: "Signatures",
-          items: ["Lollipop Chicken", "Chilli Fish", "Manchurian Fried Rice"],
-        },
-        {
-          title: "Lunch",
-          items: ["Chicken Chili Lunch", "Tangra Masala Fish Lunch", "Chili Tofu Lunch"],
-        },
-        {
-          title: "Noodles",
-          items: ["Chicken Chow Mein", "Mixed Hakka Chow Mein", "Chicken Fried Rice"],
-        },
-      ]
+    ? menuSections.slice(0, 3).map((section) => ({
+        ...section,
+        items: section.items.slice(0, 3),
+      }))
     : menuSections;
 
   return (
     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {sections.map((section, index) => (
-        <MenuCard index={index} items={section.items} key={section.title} title={section.title} />
+        <MenuCard
+          index={index}
+          items={section.items}
+          key={section.title}
+          note={section.note}
+          title={section.title}
+        />
       ))}
     </div>
   );
@@ -124,22 +179,51 @@ export function MenuGrid({ compact = false }: { compact?: boolean }) {
 export function MenuCard({
   index,
   items,
+  note,
   title,
 }: {
   index: number;
-  items: string[];
+  items: MenuItem[];
+  note?: string;
   title: string;
 }) {
   return (
-    <article className="menu-card border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]">
-      <p className="font-serif text-6xl font-black text-red/18">
-        {String(index + 1).padStart(2, "0")}
-      </p>
-      <h3 className="mt-2 font-serif text-3xl font-black">{title}</h3>
-      <ul className="mt-6 space-y-3 text-sm font-semibold leading-6 text-ink/70">
+    <article className="menu-card reveal-on-scroll border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]">
+      <div className="flex items-start justify-between gap-6">
+        <div>
+          <p className="font-serif text-6xl font-black text-red/18">
+            {String(index + 1).padStart(2, "0")}
+          </p>
+          <h3 className="mt-2 font-serif text-3xl font-black">{title}</h3>
+        </div>
+        {note && (
+          <p className="hidden max-w-[11rem] text-right text-xs font-semibold leading-5 text-ink/46 sm:block">
+            {note}
+          </p>
+        )}
+      </div>
+
+      <ul className="mt-6 space-y-5">
         {items.map((item) => (
-          <li className="border-t border-ink/10 pt-3" key={item}>
-            {item}
+          <li className="border-t border-ink/10 pt-4" key={item.name}>
+            <div className="flex items-baseline justify-between gap-4">
+              <h4 className="text-base font-black leading-tight">{item.name}</h4>
+              <span className="shrink-0 font-serif text-xl font-black text-red">
+                {item.price}
+              </span>
+            </div>
+            <p className="mt-2 text-sm font-medium leading-6 text-ink/60">
+              {item.description}
+            </p>
+            {item.tags.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {item.tags.map((tag) => (
+                  <span className="menu-tag" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </li>
         ))}
       </ul>
@@ -147,33 +231,64 @@ export function MenuCard({
   );
 }
 
+export function ImageBand() {
+  return (
+    <section className="grid bg-black sm:grid-cols-2 lg:grid-cols-4">
+      {galleryImages.map((image, index) => (
+        <figure
+          className={`image-tile reveal-on-scroll ${
+            index % 2 === 0 ? "" : "reveal-delay-1"
+          }`}
+          key={image.src}
+        >
+          <img alt={image.alt} src={image.src} />
+          <figcaption>{image.label}</figcaption>
+        </figure>
+      ))}
+    </section>
+  );
+}
+
 export function LocationCards({ compact = false }: { compact?: boolean }) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      {locations.map((location) => (
+      {locations.map((location, index) => (
         <article
-          className="border border-ink bg-cream p-7 shadow-[10px_10px_0_#171410]"
+          className="location-card reveal-on-scroll overflow-hidden border border-ink bg-cream shadow-[10px_10px_0_#171410]"
           key={location.name}
         >
-          <h3 className="font-serif text-4xl font-black">{location.name}</h3>
-          <p className="mt-5 text-lg font-semibold leading-7">{location.address}</p>
-          <a className="mt-2 inline-flex text-lg font-bold text-red" href={location.phoneHref}>
-            {location.phone}
-          </a>
-          {!compact && (
-            <div className="mt-6 space-y-2 text-sm font-semibold uppercase tracking-[0.12em] text-ink/60">
-              {location.hours.map((hour) => (
-                <p key={hour}>{hour}</p>
-              ))}
+          <div className="relative min-h-64 overflow-hidden bg-ink">
+            <img
+              alt={location.imageAlt}
+              className="h-full min-h-64 w-full object-cover transition duration-700 hover:scale-105"
+              src={location.image}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.58),rgba(0,0,0,0.08))]" />
+            <p className="absolute bottom-5 left-5 eyebrow text-gold">
+              {index === 0 ? "Elmhurst" : "Sunnyside"}
+            </p>
+          </div>
+          <div className="p-7">
+            <h3 className="font-serif text-4xl font-black">{location.name}</h3>
+            <p className="mt-5 text-lg font-semibold leading-7">{location.address}</p>
+            <a className="mt-2 inline-flex text-lg font-bold text-red" href={location.phoneHref}>
+              {location.phone}
+            </a>
+            {!compact && (
+              <div className="mt-6 space-y-2 text-sm font-semibold uppercase tracking-[0.12em] text-ink/60">
+                {location.hours.map((hour) => (
+                  <p key={hour}>{hour}</p>
+                ))}
+              </div>
+            )}
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a className="button button-dark" href={location.mapsUrl}>
+                Directions
+              </a>
+              <a className="button button-outline-dark" href={location.phoneHref}>
+                Call
+              </a>
             </div>
-          )}
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a className="button button-dark" href={location.mapsUrl}>
-              Directions
-            </a>
-            <a className="button button-outline-dark" href={location.phoneHref}>
-              Call
-            </a>
           </div>
         </article>
       ))}
@@ -183,7 +298,7 @@ export function LocationCards({ compact = false }: { compact?: boolean }) {
 
 export function YelpMenuLink() {
   return (
-    <a className="button button-outline-dark" href={yelpMenuUrl} rel="noreferrer" target="_blank">
+    <a className="button button-outline-dark" href={site.yelpMenuUrl} rel="noreferrer" target="_blank">
       Yelp Menu
     </a>
   );

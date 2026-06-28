@@ -146,6 +146,24 @@ a {
   color: var(--gold);
 }
 
+.footer-title {
+  color: rgb(233 188 91 / 0.9);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.volta-link {
+  color: #20d98f;
+  font-weight: 900;
+  transition: color 180ms ease;
+}
+
+.volta-link:hover {
+  color: #73f5bf;
+}
+
 .nav-link {
   position: relative;
   transition: color 180ms ease;
@@ -196,6 +214,149 @@ a {
   background-color: #fffdf6;
   box-shadow: 12px 12px 0 rgb(169 52 40 / 0.14);
   transform: translateY(-3px);
+}
+
+.menu-tag {
+  border: 1px solid rgb(169 52 40 / 0.24);
+  border-radius: 999px;
+  color: var(--red);
+  display: inline-flex;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  padding: 0.32rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.image-tile {
+  aspect-ratio: 4 / 5;
+  color: var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-tile img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 900ms ease;
+  width: 100%;
+}
+
+.image-tile::after {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.08));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.image-tile:hover img {
+  filter: saturate(1.12);
+  transform: scale(1.07);
+}
+
+.image-tile figcaption {
+  bottom: 1.25rem;
+  font-size: 0.74rem;
+  font-weight: 900;
+  left: 1.25rem;
+  letter-spacing: 0.18em;
+  position: absolute;
+  right: 1.25rem;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.location-card {
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.location-card:hover {
+  box-shadow: 14px 14px 0 var(--ink);
+  transform: translateY(-3px);
+}
+
+.reveal-on-scroll {
+  animation: reveal-up 680ms ease both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 90ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 180ms;
+}
+
+.image-pan {
+  animation: image-pan 14s ease-in-out infinite alternate;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes image-pan {
+  from {
+    background-position: 42% 50%;
+  }
+
+  to {
+    background-position: 58% 50%;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .image-tile img {
+    animation: photo-scroll linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .location-card img {
+    animation: storefront-scroll linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@keyframes photo-scroll {
+  from {
+    transform: scale(1.08) translateY(-2%);
+  }
+
+  to {
+    transform: scale(1.02) translateY(2%);
+  }
+}
+
+@keyframes storefront-scroll {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-track,
+  .image-pan,
+  .reveal-on-scroll {
+    animation: none;
+  }
 }
 
 @media (max-width: 520px) {

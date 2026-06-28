@@ -1,7 +1,13 @@
 import Link from "next/link";
 
-import { PageIntro, SignatureTicker, SiteFooter, SiteHeader } from "../components";
-import { storyParagraphs } from "../content";
+import {
+  ImageBand,
+  PageIntro,
+  SignatureTicker,
+  SiteFooter,
+  SiteHeader,
+} from "../components";
+import { images, storyParagraphs } from "../content";
 
 export default function StoryPage() {
   return (
@@ -9,13 +15,14 @@ export default function StoryPage() {
       <SiteHeader />
       <PageIntro
         eyebrow="Story"
+        image={images.banquetRoom}
         title="Chinese-Indian cooking with deep Queens roots."
         text="Tangra brought Calcutta-style Chinese food to New York diners looking for spice, comfort, and a table full of shared plates."
       />
       <SignatureTicker />
       <section className="px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.72fr_1fr]">
-          <div>
+          <div className="reveal-on-scroll">
             <p className="eyebrow text-red">About Tangra</p>
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
               From Elmhurst storefront to Sunnyside dining room.
@@ -24,17 +31,21 @@ export default function StoryPage() {
               View Menu
             </Link>
           </div>
-          <div className="space-y-6 text-lg leading-8 text-ink/72">
+          <div className="reveal-on-scroll reveal-delay-1 space-y-6 text-lg leading-8 text-ink/72">
             {storyParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         </div>
       </section>
+      <ImageBand />
       <section className="grid bg-ink text-paper lg:grid-cols-2">
-        <div className="min-h-[28rem] bg-[url('https://www.tangrafusionnyc.com/images/2.jpg')] bg-cover bg-center" />
+        <div
+          className="image-pan min-h-[28rem] bg-cover bg-center"
+          style={{ backgroundImage: `url(${images.diningRoom})` }}
+        />
         <div className="flex items-center px-5 py-20 sm:px-8 lg:px-16">
-          <div>
+          <div className="reveal-on-scroll">
             <p className="eyebrow text-gold">What to order</p>
             <h2 className="mt-4 max-w-xl font-serif text-4xl font-black leading-tight sm:text-5xl">
               Lolly pop chicken, chilli fish, Manchurian fried rice.
