@@ -199,7 +199,7 @@ a {
 }
 
 @media (max-width: 520px) {
-  .button {
+  .button:not(.button-fit) {
     width: 100%;
   }
 }
