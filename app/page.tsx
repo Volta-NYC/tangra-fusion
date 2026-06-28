@@ -15,13 +15,13 @@ export default function Home() {
     <main className="min-h-screen bg-paper text-ink">
       <SiteHeader />
 
-      <section className="relative isolate flex min-h-screen overflow-hidden bg-ink px-5 pt-24 text-paper sm:px-8">
-        <div className="absolute inset-0 -z-20 bg-[url('https://www.tangrafusionnyc.com/images/1.jpg')] bg-cover bg-center opacity-45" />
+      <section className="hero-scroll relative isolate flex min-h-screen overflow-hidden bg-ink px-5 pt-24 text-paper sm:px-8">
+        <div className="hero-scroll-image absolute inset-0 -z-20 bg-[url('https://www.tangrafusionnyc.com/images/1.jpg')] bg-cover bg-center opacity-45" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.96),rgba(23,20,16,0.76),rgba(23,20,16,0.22))]" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.72fr]">
           <div className="reveal-on-scroll">
             <p className="eyebrow text-gold">Chinese cuisine, Indian style</p>
-            <h1 className="mt-5 max-w-4xl font-serif text-6xl font-black leading-[0.9] sm:text-7xl lg:text-8xl">
+            <h1 className="scroll-headline mt-5 max-w-4xl font-serif text-6xl font-black leading-[0.9] sm:text-7xl lg:text-8xl">
               Calcutta Chinese in Queens.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-paper/76">
@@ -63,7 +63,7 @@ export default function Home() {
 
       <SignatureTicker />
 
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
+      <section className="section-rise px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.82fr_1fr] lg:items-center">
           <div className="reveal-on-scroll">
             <p className="eyebrow text-red">About Tangra</p>
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-cream px-5 py-20 sm:px-8 lg:py-28">
+      <section className="section-rise bg-cream px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="reveal-on-scroll flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -106,7 +106,7 @@ export default function Home() {
 
       <ImageBand />
 
-      <section className="grid bg-ink text-paper lg:grid-cols-2">
+      <section className="split-scroll grid bg-ink text-paper lg:grid-cols-2">
         <div
           className="image-pan min-h-[28rem] bg-cover bg-center"
           style={{ backgroundImage: `url(${images.diningRoom})` }}
@@ -126,7 +126,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
+      <section className="section-rise px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="reveal-on-scroll flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>

@@ -14,6 +14,7 @@ type MenuItem = (typeof menuSections)[number]["items"][number];
 export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 text-paper backdrop-blur">
+      <div className="scroll-progress" />
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <Link className="leading-none" href="/" aria-label="Tangra Fusion home">
           <span className="block font-serif text-2xl font-bold tracking-wide">
@@ -45,7 +46,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-black px-5 py-14 text-paper sm:px-8">
+    <footer className="footer-glow relative overflow-hidden bg-black px-5 py-14 text-paper sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.6fr_1fr]">
         <div className="reveal-on-scroll">
           <p className="font-serif text-4xl font-bold">{site.name}</p>
@@ -92,7 +93,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
+      <div className="reveal-on-scroll mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
         <p>© 2026 Tangra Fusion. All rights reserved.</p>
         <p>
           Created by{" "}
@@ -136,13 +137,13 @@ export function PageIntro({
       {image && (
         <>
           <div
-            className="absolute inset-0 -z-20 bg-cover bg-center opacity-[0.24]"
+            className="intro-image absolute inset-0 -z-20 bg-cover bg-center opacity-[0.24]"
             style={{ backgroundImage: `url(${image})` }}
           />
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.98),rgba(23,20,16,0.82),rgba(23,20,16,0.48))]" />
         </>
       )}
-      <div className="reveal-on-scroll mx-auto max-w-7xl">
+      <div className="reveal-on-scroll intro-copy mx-auto max-w-7xl">
         <p className="eyebrow text-gold">{eyebrow}</p>
         <h1 className="mt-5 max-w-4xl font-serif text-5xl font-black leading-[0.94] sm:text-7xl">
           {title}
@@ -188,7 +189,10 @@ export function MenuCard({
   title: string;
 }) {
   return (
-    <article className="menu-card reveal-on-scroll border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]">
+    <article
+      className="menu-card reveal-on-scroll border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]"
+      style={{ animationDelay: `${Math.min(index, 5) * 70}ms` }}
+    >
       <div className="flex items-start justify-between gap-6">
         <div>
           <p className="font-serif text-6xl font-black text-red/18">
@@ -233,7 +237,7 @@ export function MenuCard({
 
 export function ImageBand() {
   return (
-    <section className="grid bg-black sm:grid-cols-2 lg:grid-cols-4">
+    <section className="image-band grid bg-black sm:grid-cols-2 lg:grid-cols-4">
       {galleryImages.map((image, index) => (
         <figure
           className={`image-tile reveal-on-scroll ${
@@ -256,6 +260,7 @@ export function LocationCards({ compact = false }: { compact?: boolean }) {
         <article
           className="location-card reveal-on-scroll overflow-hidden border border-ink bg-cream shadow-[10px_10px_0_#171410]"
           key={location.name}
+          style={{ animationDelay: `${index * 110}ms` }}
         >
           <div className="relative min-h-64 overflow-hidden bg-ink">
             <img
