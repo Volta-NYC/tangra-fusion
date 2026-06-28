@@ -19,7 +19,7 @@ export default function Home() {
         <div className="hero-scroll-image absolute inset-0 -z-20 bg-[url('https://www.tangrafusionnyc.com/images/1.jpg')] bg-cover bg-center opacity-45" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.96),rgba(23,20,16,0.76),rgba(23,20,16,0.22))]" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.72fr]">
-          <div className="reveal-on-scroll">
+          <div className="scroll-reveal reveal-left is-visible">
             <p className="eyebrow text-gold">Chinese cuisine, Indian style</p>
             <h1 className="scroll-headline mt-5 max-w-4xl font-serif text-6xl font-black leading-[0.9] sm:text-7xl lg:text-8xl">
               Calcutta Chinese in Queens.
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
 
           <aside className="hidden lg:block">
-            <div className="reveal-on-scroll reveal-delay-1 border border-paper/18 bg-paper/10 p-6 shadow-2xl shadow-black/40 backdrop-blur">
+            <div className="scroll-reveal reveal-right is-visible border border-paper/18 bg-paper/10 p-6 shadow-2xl shadow-black/40 backdrop-blur">
               <p className="eyebrow text-gold">House signatures</p>
               <div className="mt-6 grid gap-3">
                 {signatures.map((item) => (
@@ -65,13 +65,13 @@ export default function Home() {
 
       <section className="section-rise px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.82fr_1fr] lg:items-center">
-          <div className="reveal-on-scroll">
+          <div className="scroll-reveal reveal-left">
             <p className="eyebrow text-red">About Tangra</p>
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
               A New York home for Chinese-Indian cooking.
             </h2>
           </div>
-          <div className="reveal-on-scroll reveal-delay-1">
+          <div className="scroll-reveal reveal-right">
             <p className="text-lg leading-8 text-ink/72">
               Tangra is a destination for the Chinese food adapted to the
               Indian palate by generations of ethnic-Chinese Indians. The
@@ -87,7 +87,7 @@ export default function Home() {
 
       <section className="section-rise bg-cream px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="reveal-on-scroll flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="scroll-reveal reveal-up flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="eyebrow text-red">Menu preview</p>
               <h2 className="mt-4 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
@@ -112,7 +112,7 @@ export default function Home() {
           style={{ backgroundImage: `url(${images.diningRoom})` }}
         />
         <div className="flex items-center px-5 py-20 sm:px-8 lg:px-16">
-          <div className="reveal-on-scroll">
+          <div className="scroll-reveal reveal-right">
             <p className="eyebrow text-gold">Halal meat</p>
             <h2 className="mt-4 max-w-xl font-serif text-4xl font-black leading-tight sm:text-5xl">
               Familiar comfort, finished with heat.
@@ -128,7 +128,7 @@ export default function Home() {
 
       <section className="section-rise px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="reveal-on-scroll flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="scroll-reveal reveal-up flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="eyebrow text-red">Visit</p>
               <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">

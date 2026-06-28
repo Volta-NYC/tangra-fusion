@@ -313,6 +313,51 @@ a {
   transform: translateY(-3px);
 }
 
+.scroll-reveal {
+  transition-duration: 760ms;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-ready .scroll-reveal:not(.is-visible) {
+  opacity: 0;
+}
+
+.reveal-ready .reveal-left:not(.is-visible) {
+  filter: blur(3px);
+  transform: translate3d(-48px, 18px, 0);
+}
+
+.reveal-ready .reveal-right:not(.is-visible) {
+  filter: blur(3px);
+  transform: translate3d(48px, 18px, 0);
+}
+
+.reveal-ready .reveal-up:not(.is-visible) {
+  filter: blur(2px);
+  transform: translate3d(0, 42px, 0);
+}
+
+.reveal-ready .reveal-zoom:not(.is-visible) {
+  filter: blur(2px);
+  transform: translate3d(0, 22px, 0) scale(0.94);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-stagger-1 {
+  transition-delay: 90ms;
+}
+
+.reveal-stagger-2 {
+  transition-delay: 180ms;
+}
+
 .reveal-on-scroll {
   animation: reveal-up 680ms ease both;
 }
@@ -562,8 +607,12 @@ a {
   .ticker-track,
   .image-pan,
   .scroll-progress,
+  .scroll-reveal,
   .reveal-on-scroll {
     animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

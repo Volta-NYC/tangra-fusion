@@ -48,7 +48,7 @@ export function SiteFooter() {
   return (
     <footer className="footer-glow relative overflow-hidden bg-black px-5 py-14 text-paper sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.6fr_1fr]">
-        <div className="reveal-on-scroll">
+        <div className="scroll-reveal reveal-left">
           <p className="font-serif text-4xl font-bold">{site.name}</p>
           <p className="mt-4 max-w-xl text-sm leading-6 text-paper/58">
             {site.description}
@@ -63,7 +63,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="reveal-on-scroll reveal-delay-1">
+        <div className="scroll-reveal reveal-up reveal-stagger-1">
           <h3 className="footer-title">Explore</h3>
           <div className="mt-5 grid gap-3 text-sm text-paper/62">
             {navItems.map((item) => (
@@ -77,7 +77,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="reveal-on-scroll reveal-delay-2">
+        <div className="scroll-reveal reveal-right reveal-stagger-2">
           <h3 className="footer-title">Visit</h3>
           <div className="mt-5 grid gap-5 text-sm leading-6 text-paper/62 sm:grid-cols-2 lg:grid-cols-1">
             {locations.map((location) => (
@@ -93,7 +93,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="reveal-on-scroll mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
+      <div className="scroll-reveal reveal-up mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
         <p>© 2026 Tangra Fusion. All rights reserved.</p>
         <p>
           Created by{" "}
@@ -143,7 +143,7 @@ export function PageIntro({
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(23,20,16,0.98),rgba(23,20,16,0.82),rgba(23,20,16,0.48))]" />
         </>
       )}
-      <div className="reveal-on-scroll intro-copy mx-auto max-w-7xl">
+      <div className="scroll-reveal reveal-left intro-copy mx-auto max-w-7xl">
         <p className="eyebrow text-gold">{eyebrow}</p>
         <h1 className="mt-5 max-w-4xl font-serif text-5xl font-black leading-[0.94] sm:text-7xl">
           {title}
@@ -188,10 +188,14 @@ export function MenuCard({
   note?: string;
   title: string;
 }) {
+  const revealVariants = ["reveal-left", "reveal-up", "reveal-right", "reveal-zoom"];
+
   return (
     <article
-      className="menu-card reveal-on-scroll border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]"
-      style={{ animationDelay: `${Math.min(index, 5) * 70}ms` }}
+      className={`menu-card scroll-reveal ${
+        revealVariants[index % revealVariants.length]
+      } border border-ink/12 bg-paper p-7 shadow-[8px_8px_0_rgba(23,20,16,0.08)]`}
+      style={{ transitionDelay: `${Math.min(index, 5) * 80}ms` }}
     >
       <div className="flex items-start justify-between gap-6">
         <div>
@@ -240,9 +244,10 @@ export function ImageBand() {
     <section className="image-band grid bg-black sm:grid-cols-2 lg:grid-cols-4">
       {galleryImages.map((image, index) => (
         <figure
-          className={`image-tile reveal-on-scroll ${
-            index % 2 === 0 ? "" : "reveal-delay-1"
+          className={`image-tile scroll-reveal ${
+            index % 2 === 0 ? "reveal-left" : "reveal-right"
           }`}
+          style={{ transitionDelay: `${index * 70}ms` }}
           key={image.src}
         >
           <img alt={image.alt} src={image.src} />
@@ -258,9 +263,11 @@ export function LocationCards({ compact = false }: { compact?: boolean }) {
     <div className="grid gap-6 lg:grid-cols-2">
       {locations.map((location, index) => (
         <article
-          className="location-card reveal-on-scroll overflow-hidden border border-ink bg-cream shadow-[10px_10px_0_#171410]"
+          className={`location-card scroll-reveal ${
+            index % 2 === 0 ? "reveal-left" : "reveal-right"
+          } overflow-hidden border border-ink bg-cream shadow-[10px_10px_0_#171410]`}
           key={location.name}
-          style={{ animationDelay: `${index * 110}ms` }}
+          style={{ transitionDelay: `${index * 110}ms` }}
         >
           <div className="relative min-h-64 overflow-hidden bg-ink">
             <img

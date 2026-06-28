@@ -13,7 +13,7 @@ export default function LocationsPage() {
       />
       <section className="px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="reveal-on-scroll max-w-3xl">
+          <div className="scroll-reveal reveal-left max-w-3xl">
             <p className="eyebrow text-red">Visit</p>
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
               Hours, calls, and directions.

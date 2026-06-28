@@ -22,7 +22,7 @@ export default function StoryPage() {
       <SignatureTicker />
       <section className="px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.72fr_1fr]">
-          <div className="reveal-on-scroll">
+          <div className="scroll-reveal reveal-left">
             <p className="eyebrow text-red">About Tangra</p>
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
               From Elmhurst storefront to Sunnyside dining room.
@@ -31,7 +31,7 @@ export default function StoryPage() {
               View Menu
             </Link>
           </div>
-          <div className="reveal-on-scroll reveal-delay-1 space-y-6 text-lg leading-8 text-ink/72">
+          <div className="scroll-reveal reveal-right space-y-6 text-lg leading-8 text-ink/72">
             {storyParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -45,7 +45,7 @@ export default function StoryPage() {
           style={{ backgroundImage: `url(${images.diningRoom})` }}
         />
         <div className="flex items-center px-5 py-20 sm:px-8 lg:px-16">
-          <div className="reveal-on-scroll">
+          <div className="scroll-reveal reveal-right">
             <p className="eyebrow text-gold">What to order</p>
             <h2 className="mt-4 max-w-xl font-serif text-4xl font-black leading-tight sm:text-5xl">
               Lolly pop chicken, chilli fish, Manchurian fried rice.
