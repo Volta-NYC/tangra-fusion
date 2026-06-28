@@ -497,18 +497,6 @@ a {
     animation-range: entry 0% exit 100%;
   }
 
-  .menu-card:nth-child(3n + 1) {
-    animation-name: reveal-left;
-  }
-
-  .menu-card:nth-child(3n + 2) {
-    animation-name: reveal-up;
-  }
-
-  .menu-card:nth-child(3n) {
-    animation-name: reveal-right;
-  }
-
   .image-tile img {
     animation: photo-scroll linear both;
     animation-timeline: view();
@@ -595,30 +583,6 @@ a {
 
   to {
     transform: translateY(-16px);
-  }
-}
-
-@keyframes reveal-left {
-  from {
-    opacity: 0;
-    transform: translateX(-22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes reveal-right {
-  from {
-    opacity: 0;
-    transform: translateX(22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 

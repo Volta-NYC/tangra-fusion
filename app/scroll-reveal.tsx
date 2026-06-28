@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>(".scroll-reveal"));
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -31,15 +34,8 @@ export function ScrollReveal() {
 
     elements.forEach((element) => observer.observe(element));
 
-    const fallback = window.setTimeout(() => {
-      elements.forEach((element) => element.classList.add("is-visible"));
-    }, 3500);
-
-    return () => {
-      window.clearTimeout(fallback);
-      observer.disconnect();
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return null;
 }
