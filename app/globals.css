@@ -158,13 +158,13 @@ a {
 }
 
 .volta-link {
-  color: #20d98f;
+  color: #f6b78d;
   font-weight: 900;
   transition: color 180ms ease;
 }
 
 .volta-link:hover {
-  color: #73f5bf;
+  color: #f6b78d;
 }
 
 .nav-link {

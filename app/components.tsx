@@ -96,9 +96,9 @@ export function SiteFooter() {
       <div className="scroll-reveal reveal-up mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-paper/10 pt-6 text-xs uppercase tracking-[0.18em] text-paper/42 sm:flex-row sm:items-center sm:justify-between">
         <p>© 2026 Tangra Fusion. All rights reserved.</p>
         <p>
-          Created by{" "}
-          <a className="volta-link" href={site.voltaUrl} rel="noreferrer" target="_blank">
-            Volta
+          Made by{" "}
+          <a className="volta-link" href="https://www.novusnyc.org/" rel="noreferrer" target="_blank">
+            Novus
           </a>
         </p>
       </div>
