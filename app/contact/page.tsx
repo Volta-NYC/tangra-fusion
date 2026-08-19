@@ -8,8 +8,8 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         image={images.tableSpread}
-        title="Call, visit, or send Tangra a note."
-        text="Reach either Queens location for hours, directions, takeout questions, group dining, or general inquiries."
+        title="Call Tangra directly."
+        text="Reach either Queens location for hours, directions, takeout questions, group dining, or anything that needs a quick answer."
       />
 
       <section className="section-rise px-5 py-20 sm:px-8 lg:py-28">
@@ -32,46 +32,34 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <form className="scroll-reveal reveal-right border border-ink bg-cream p-6 shadow-[10px_10px_0_#171410] sm:p-8">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="form-field">
-                <span>Name</span>
-                <input type="text" name="name" placeholder="Your name" />
-              </label>
-              <label className="form-field">
-                <span>Phone</span>
-                <input type="tel" name="phone" placeholder="(718) 000-0000" />
-              </label>
-              <label className="form-field sm:col-span-2">
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" />
-              </label>
-              <label className="form-field sm:col-span-2">
-                <span>Location</span>
-                <select name="location" defaultValue="">
-                  <option value="" disabled>
-                    Choose a location
-                  </option>
-                  {locations.map((location) => (
-                    <option key={location.name} value={location.name}>
-                      {location.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="form-field sm:col-span-2">
-                <span>Message</span>
-                <textarea name="message" placeholder="How can we help?" rows={6} />
-              </label>
-            </div>
-            <button className="button button-dark mt-6" type="button">
-              Send Message
-            </button>
-            <p className="mt-4 text-sm leading-6 text-ink/58">
-              This form is ready for a backend or form service. For immediate
-              requests, please call the restaurant.
+          <aside className="scroll-reveal reveal-right border border-ink bg-cream p-6 shadow-[10px_10px_0_#171410] sm:p-8">
+            <p className="eyebrow text-red">Call only</p>
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
+              Pick the location closest to you.
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-ink/68">
+              Tangra handles the practical stuff best over the phone: table
+              availability, takeout timing, catering questions, and same-day
+              requests.
             </p>
-          </form>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {locations.map((location) => (
+                <a
+                  className="group border border-ink/14 bg-paper p-5 transition duration-300 hover:-translate-y-1 hover:border-red hover:bg-white"
+                  href={location.phoneHref}
+                  key={location.name}
+                >
+                  <span className="eyebrow text-red">{location.name}</span>
+                  <span className="mt-5 block font-serif text-3xl font-black leading-none">
+                    {location.phone}
+                  </span>
+                  <span className="mt-4 block text-sm font-bold leading-6 text-ink/58">
+                    Tap to call this location.
+                  </span>
+                </a>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
 
