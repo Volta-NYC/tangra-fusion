@@ -4,7 +4,7 @@ export const site = {
     "Chinese cuisine, Indian style. Halal meat, wok-fired Indo-Chinese signatures, and two Queens dining rooms.",
   yelpMenuUrl:
     "https://www.yelp.com/menu/tangra-asian-fusion-cuisine-sunnyside",
-  voltaUrl: "https://www.volta.nyc/",
+  novusUrl: "https://www.novusnyc.org/",
 };
 
 export const navItems = [

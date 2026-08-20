@@ -97,7 +97,7 @@ export function SiteFooter() {
         <p>© 2026 Tangra Fusion. All rights reserved.</p>
         <p>
           Made by{" "}
-          <a className="volta-link" href="https://www.novusnyc.org/" rel="noreferrer" target="_blank">
+          <a className="novus-link" href={site.novusUrl} rel="noreferrer" target="_blank">
             Novus
           </a>
         </p>

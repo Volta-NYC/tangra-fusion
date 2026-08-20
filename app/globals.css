@@ -8,6 +8,7 @@
   --ink: #171410;
   --red: #a93428;
   --gold: #e9bc5b;
+  --novus-peach: #f6b78d;
 }
 
 * {
@@ -157,14 +158,14 @@ a {
   text-transform: uppercase;
 }
 
-.volta-link {
-  color: #f6b78d;
+.novus-link {
+  color: var(--novus-peach);
   font-weight: 900;
   transition: color 180ms ease;
 }
 
-.volta-link:hover {
-  color: #f6b78d;
+.novus-link:hover {
+  color: var(--novus-peach);
 }
 
 .nav-link {
