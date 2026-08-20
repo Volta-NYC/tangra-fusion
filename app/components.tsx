@@ -200,7 +200,7 @@ export function MenuCard({
       <div className="flex items-start justify-between gap-6">
         <div>
           <p className="font-serif text-6xl font-black text-red/18">
-            {String(index + 1).padStart(2, "0")}
+            {index + 1}
           </p>
           <h3 className="mt-2 font-serif text-3xl font-black">{title}</h3>
         </div>
