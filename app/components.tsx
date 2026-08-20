@@ -250,7 +250,14 @@ export function ImageBand() {
           style={{ transitionDelay: `${index * 70}ms` }}
           key={image.src}
         >
-          <img alt={image.alt} src={image.src} />
+          <img
+            alt={image.alt}
+            decoding="async"
+            height="1000"
+            loading="lazy"
+            src={image.src}
+            width="800"
+          />
           <figcaption>{image.label}</figcaption>
         </figure>
       ))}
@@ -273,7 +280,11 @@ export function LocationCards({ compact = false }: { compact?: boolean }) {
             <img
               alt={location.imageAlt}
               className="h-full min-h-64 w-full object-cover transition duration-700 hover:scale-105"
+              decoding="async"
+              height={location.imageHeight}
+              loading="lazy"
               src={location.image}
+              width={location.imageWidth}
             />
             <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.58),rgba(0,0,0,0.08))]" />
             <p className="absolute bottom-5 left-5 eyebrow text-gold">

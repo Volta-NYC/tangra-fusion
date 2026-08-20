@@ -269,10 +269,17 @@ export const locations = [
     telephone: "+17188032298",
     hours: ["Monday - Thursday: 12PM - 9:30PM", "Friday - Sunday: 1PM - 12AM"],
     openingHours: ["Mo-Th 12:00-21:30", "Fr-Su 13:00-00:00"],
+    seoHeading: "Elmhurst Indo-Chinese restaurant on Grand Avenue",
+    seoDescription:
+      "Tangra Masala in Elmhurst serves Chinese-Indian cooking, halal meat, Manchurian sauces, spicy soups, fried rice, noodles, and seafood close to Queens families looking for Indo-Chinese takeout or a sit-down meal.",
+    highlights: ["Indo-Chinese food in Elmhurst", "Halal meat", "Grand Avenue takeout"],
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=87-09+Grand+Avenue+Elmhurst+NY+11373",
     image: images.elmhurstStorefront,
-    imageAlt: "Tangra Masala Elmhurst storefront",
+    imageAlt:
+      "Tangra Masala storefront on Grand Avenue in Elmhurst, Queens",
+    imageWidth: 1000,
+    imageHeight: 750,
   },
   {
     name: "Tangra Asian Fusion",
@@ -288,32 +295,39 @@ export const locations = [
     telephone: "+17187868008",
     hours: ["Sunday - Thursday: 1PM - 11PM", "Friday - Saturday: 1PM - 12AM"],
     openingHours: ["Su-Th 13:00-23:00", "Fr-Sa 13:00-00:00"],
+    seoHeading: "Sunnyside Asian fusion restaurant on Queens Boulevard",
+    seoDescription:
+      "Tangra Asian Fusion in Sunnyside brings Chinese-Indian restaurant favorites to Queens Boulevard, including lollipop chicken, chilli fish, Manchurian fried rice, Hakka noodles, soups, and family-style Asian fusion plates.",
+    highlights: ["Asian fusion in Sunnyside", "Queens Boulevard dining", "Family-style plates"],
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=3923+Queens+Boulevard+Sunnyside+NY+11104",
     image: images.sunnysideStorefront,
-    imageAlt: "Tangra Asian Fusion Sunnyside storefront",
+    imageAlt:
+      "Tangra Asian Fusion storefront on Queens Boulevard in Sunnyside, Queens",
+    imageWidth: 680,
+    imageHeight: 510,
   },
 ];
 
 export const galleryImages = [
   {
     src: images.lollipop,
-    alt: "Tangra lollipop chicken",
+    alt: "Tangra Fusion lollipop chicken appetizer with Indo-Chinese spice",
     label: "Lollipop Chicken",
   },
   {
     src: images.tableSpread,
-    alt: "Tangra table spread",
+    alt: "Tangra Fusion family-style Chinese-Indian table spread",
     label: "Family-style plates",
   },
   {
     src: images.banquetRoom,
-    alt: "Tangra dining room",
+    alt: "Tangra Fusion Sunnyside dining room for family meals and banquets",
     label: "Sunnyside dining room",
   },
   {
     src: images.saucyChicken,
-    alt: "Tangra saucy chicken dish",
+    alt: "Tangra Fusion saucy Manchurian chicken dish",
     label: "Manchurian heat",
   },
 ];
