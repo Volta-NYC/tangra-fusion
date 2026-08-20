@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
+
 import { LocationCards, PageIntro, SiteFooter, SiteHeader } from "../components";
 import { images } from "../content";
+import { pageMetadata } from "../seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Queens Locations",
+  description:
+    "Find Tangra Fusion in Elmhurst and Sunnyside, Queens for Chinese-Indian food, Indo-Chinese signatures, halal meat, hours, calls, and directions.",
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   return (

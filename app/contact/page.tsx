@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
+
 import { LocationCards, PageIntro, SiteFooter, SiteHeader } from "../components";
 import { images, locations } from "../content";
+import { pageMetadata } from "../seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Contact",
+  description:
+    "Call Tangra Fusion in Elmhurst or Sunnyside, Queens for takeout timing, hours, directions, group dining, and same-day restaurant questions.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

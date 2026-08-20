@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
@@ -8,6 +9,14 @@ import {
   SiteHeader,
 } from "../components";
 import { images, storyParagraphs } from "../content";
+import { pageMetadata } from "../seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Story",
+  description:
+    "Read the Tangra Fusion story, from an Elmhurst Chinese-Indian restaurant to a Sunnyside dining room built around Calcutta-style Chinese cooking.",
+  path: "/story",
+});
 
 export default function StoryPage() {
   return (

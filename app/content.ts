@@ -257,10 +257,18 @@ export const menuSections = [
 export const locations = [
   {
     name: "Tangra Masala",
+    slug: "elmhurst",
+    neighborhood: "Elmhurst",
     address: "87-09 Grand Avenue, Elmhurst, NY 11373",
+    streetAddress: "87-09 Grand Avenue",
+    addressLocality: "Elmhurst",
+    addressRegion: "NY",
+    postalCode: "11373",
     phone: "(718) 803-2298",
     phoneHref: "tel:7188032298",
+    telephone: "+17188032298",
     hours: ["Monday - Thursday: 12PM - 9:30PM", "Friday - Sunday: 1PM - 12AM"],
+    openingHours: ["Mo-Th 12:00-21:30", "Fr-Su 13:00-00:00"],
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=87-09+Grand+Avenue+Elmhurst+NY+11373",
     image: images.elmhurstStorefront,
@@ -268,10 +276,18 @@ export const locations = [
   },
   {
     name: "Tangra Asian Fusion",
+    slug: "sunnyside",
+    neighborhood: "Sunnyside",
     address: "3923 Queens Boulevard, Sunnyside, NY 11104",
+    streetAddress: "3923 Queens Boulevard",
+    addressLocality: "Sunnyside",
+    addressRegion: "NY",
+    postalCode: "11104",
     phone: "(718) 786-8008",
     phoneHref: "tel:7187868008",
+    telephone: "+17187868008",
     hours: ["Sunday - Thursday: 1PM - 11PM", "Friday - Saturday: 1PM - 12AM"],
+    openingHours: ["Su-Th 13:00-23:00", "Fr-Sa 13:00-00:00"],
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=3923+Queens+Boulevard+Sunnyside+NY+11104",
     image: images.sunnysideStorefront,

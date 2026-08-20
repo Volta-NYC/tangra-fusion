@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import {
   ImageBand,
   MenuGrid,
@@ -7,10 +9,20 @@ import {
   YelpMenuLink,
 } from "../components";
 import { images } from "../content";
+import { menuJsonLd, pageMetadata } from "../seo";
+import { StructuredData } from "../structured-data";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Menu Highlights",
+  description:
+    "Explore Tangra Fusion menu highlights including lollipop chicken, Manchurian dishes, Hakka noodles, fried rice, soups, vegetarian plates, and seafood.",
+  path: "/menu",
+});
 
 export default function MenuPage() {
   return (
     <main className="min-h-screen bg-cream text-ink">
+      <StructuredData data={menuJsonLd()} />
       <SiteHeader />
       <PageIntro
         eyebrow="Menu"
