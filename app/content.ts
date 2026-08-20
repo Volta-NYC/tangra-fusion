@@ -1,5 +1,6 @@
 export const site = {
   name: "Tangra Fusion",
+  url: "https://www.tangrafusionnyc.com",
   description:
     "Chinese cuisine, Indian style. Halal meat, wok-fired Indo-Chinese signatures, and two Queens dining rooms.",
   yelpMenuUrl:
