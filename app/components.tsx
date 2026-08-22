@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import {
   galleryImages,
+  locationMenus,
   locations,
   menuSections,
   navItems,
@@ -10,6 +11,7 @@ import {
 } from "./content";
 
 type MenuItem = (typeof menuSections)[number]["items"][number];
+type MenuSection = (typeof menuSections)[number];
 
 export function SiteHeader() {
   return (
@@ -154,17 +156,23 @@ export function PageIntro({
   );
 }
 
-export function MenuGrid({ compact = false }: { compact?: boolean }) {
-  const sections = compact
-    ? menuSections.slice(0, 3).map((section) => ({
+export function MenuGrid({
+  compact = false,
+  sections = menuSections,
+}: {
+  compact?: boolean;
+  sections?: MenuSection[];
+}) {
+  const visibleSections = compact
+    ? sections.slice(0, 3).map((section) => ({
         ...section,
         items: section.items.slice(0, 3),
       }))
-    : menuSections;
+    : sections;
 
   return (
     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {sections.map((section, index) => (
+      {visibleSections.map((section, index) => (
         <MenuCard
           index={index}
           items={section.items}
@@ -172,6 +180,36 @@ export function MenuGrid({ compact = false }: { compact?: boolean }) {
           note={section.note}
           title={section.title}
         />
+      ))}
+    </div>
+  );
+}
+
+export function LocationMenuSections() {
+  return (
+    <div className="grid gap-16">
+      {locationMenus.map((menu, index) => (
+        <section
+          className={`scroll-reveal ${
+            index % 2 === 0 ? "reveal-left" : "reveal-right"
+          } scroll-mt-28`}
+          id={menu.slug}
+          key={menu.slug}
+        >
+          <div className="mb-8 flex flex-col gap-5 border-b border-ink/12 pb-8 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="eyebrow text-red">{menu.neighborhood}</p>
+              <h2 className="mt-4 font-serif text-5xl font-black leading-none">
+                {menu.name}
+              </h2>
+              <p className="mt-4 max-w-2xl text-base font-semibold leading-7 text-ink/62">
+                {menu.address}. {menu.note}
+              </p>
+            </div>
+            <YelpMenuLink href={menu.yelpMenuUrl} label={`Full ${menu.neighborhood} Yelp Menu`} />
+          </div>
+          <MenuGrid sections={menu.sections} />
+        </section>
       ))}
     </div>
   );
@@ -319,10 +357,16 @@ export function LocationCards({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export function YelpMenuLink() {
+export function YelpMenuLink({
+  href = site.yelpMenuUrl,
+  label = "Yelp Menu",
+}: {
+  href?: string;
+  label?: string;
+}) {
   return (
-    <a className="button button-outline-dark" href={site.yelpMenuUrl} rel="noreferrer" target="_blank">
-      Yelp Menu
+    <a className="button button-outline-dark" href={href} rel="noreferrer" target="_blank">
+      {label}
     </a>
   );
 }

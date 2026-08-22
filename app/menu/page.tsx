@@ -2,20 +2,19 @@ import type { Metadata } from "next";
 
 import {
   ImageBand,
-  MenuGrid,
+  LocationMenuSections,
   PageIntro,
   SiteFooter,
   SiteHeader,
-  YelpMenuLink,
 } from "../components";
-import { images } from "../content";
+import { images, locationMenus } from "../content";
 import { menuJsonLd, pageMetadata } from "../seo";
 import { StructuredData } from "../structured-data";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Menu Highlights",
+  title: "Menus",
   description:
-    "Explore Tangra Fusion menu highlights including lollipop chicken, Manchurian dishes, Hakka noodles, fried rice, soups, vegetarian plates, and seafood.",
+    "Explore separate Tangra Asian Fusion Sunnyside and Tangra Masala Elmhurst menus with Yelp-backed highlights, prices, dishes, and direct full-menu links.",
   path: "/menu",
 });
 
@@ -27,21 +26,31 @@ export default function MenuPage() {
       <PageIntro
         eyebrow="Menu"
         image={images.tableSpread}
-        title="Tangra signatures, noodles, rice, soups, and seafood."
-        text="Menu highlights are previewed from Tangra Asian Fusion Cuisine's Yelp menu. Please call the restaurant for current prices and availability."
+        title="Choose the Tangra menu closest to you."
+        text="Sunnyside and Elmhurst have separate Yelp menus. Jump to a location, scan highlights, then call the restaurant for current availability."
       />
       <section className="px-5 py-20 sm:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="scroll-reveal reveal-up mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="scroll-reveal reveal-up mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="eyebrow text-red">Highlights</p>
+              <p className="eyebrow text-red">Pick a location</p>
               <h2 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">
-                Built around the wok.
+                Low-friction menu browsing.
               </h2>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-ink/68">
+                The two menus are split below so guests can go straight to the
+                right location without comparing every dish twice.
+              </p>
             </div>
-            <YelpMenuLink />
+            <div className="flex flex-col gap-3 sm:flex-row">
+              {locationMenus.map((menu) => (
+                <a className="button button-dark" href={`#${menu.slug}`} key={menu.slug}>
+                  {menu.neighborhood} Menu
+                </a>
+              ))}
+            </div>
           </div>
-          <MenuGrid />
+          <LocationMenuSections />
         </div>
       </section>
       <ImageBand />

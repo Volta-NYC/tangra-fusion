@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { images, locations, menuSections, site } from "./content";
+import { images, locationMenus, locations, site } from "./content";
 
 export const defaultTitle = "Tangra Fusion | Chinese-Indian Cuisine in Queens";
 
@@ -66,7 +66,7 @@ export function restaurantJsonLd() {
       },
       areaServed: location.neighborhood,
       hasMap: location.mapsUrl,
-      menu: site.yelpMenuUrl,
+      menu: location.yelpMenuUrl,
       priceRange: "$$",
       servesCuisine: ["Chinese-Indian", "Indo-Chinese", "Asian Fusion", "Halal"],
       openingHours: location.openingHours,
@@ -77,23 +77,25 @@ export function restaurantJsonLd() {
 export function menuJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Menu",
-    "@id": `${site.url}/menu#menu`,
-    name: "Tangra Fusion menu",
-    url: `${site.url}/menu`,
-    hasMenuSection: menuSections.map((section) => ({
-      "@type": "MenuSection",
-      name: section.title,
-      description: section.note,
-      hasMenuItem: section.items.map((item) => ({
-        "@type": "MenuItem",
-        name: item.name,
-        description: item.description,
-        offers: {
-          "@type": "Offer",
-          price: item.price.replace("$", ""),
-          priceCurrency: "USD",
-        },
+    "@graph": locationMenus.map((menu) => ({
+      "@type": "Menu",
+      "@id": `${site.url}/menu#${menu.slug}`,
+      name: `${menu.name} menu`,
+      url: `${site.url}/menu#${menu.slug}`,
+      hasMenuSection: menu.sections.map((section) => ({
+        "@type": "MenuSection",
+        name: section.title,
+        description: section.note,
+        hasMenuItem: section.items.map((item) => ({
+          "@type": "MenuItem",
+          name: item.name,
+          description: item.description,
+          offers: {
+            "@type": "Offer",
+            price: item.price.replace("$", ""),
+            priceCurrency: "USD",
+          },
+        })),
       })),
     })),
   };
